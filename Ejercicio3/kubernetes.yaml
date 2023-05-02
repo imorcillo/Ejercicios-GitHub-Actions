@@ -1,0 +1,35 @@
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: calculadora
+spec:
+  selector:
+    app: calculadora
+  ports:
+  - name: calculadora
+    port: 3000
+    targetPort: 3000
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculadora
+  labels:
+    app: calculadora
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculadora
+  template:
+    metadata:
+      labels:
+        app: calculadora
+    spec:
+      containers:
+      - name: calculadora
+        image: igmorcillo/recursos:2.0
+        ports:
+        - containerPort: 3000
