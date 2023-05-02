@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Ejecuta la aplicación al iniciar el contenedor
-CMD [ "node", "Ejercicio2.js" ]
+CMD [ "node", "Ejercicio.js" ]
